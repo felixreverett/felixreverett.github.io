@@ -1,0 +1,6 @@
+
+User-agent: fawnbot
+Allow: *
+
+User-Agent: *
+Allow: *
