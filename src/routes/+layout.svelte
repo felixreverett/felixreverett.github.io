@@ -3,6 +3,10 @@
   import Footer from '../lib/components/Footer.svelte';
   import { onMount } from 'svelte';
   import '../app.css';
+  import { page } from '$app/stores';
+
+  const BASE_URL = 'https://felixreverett.com';
+  $: canonicalUrl = `${BASE_URL}${$page.url.pathname}`;
 
   let navHeight = 0;
 
@@ -13,6 +17,10 @@
     }
   });
 </script>
+
+<svelte:head>
+  <link rel="canonical" href={canonicalUrl} />
+</svelte:head>
 
 <div class="site-wrapper">
   <Nav />

@@ -65,7 +65,7 @@
     </section>
 
     <section class="content-section">
-        <h2 class="section-title">Skills</h2>
+        <h2 class="section-title">Technical Skills</h2>
         <div>
             <SkillsCard />
         </div>
