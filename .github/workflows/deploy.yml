@@ -32,13 +32,16 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
 
-      # We can keep this for extra robustness, though npm install handles existing node_modules better
-      - name: Clean node_modules (for troubleshooting optional dependency issues)
+      # Clean node_modules just in case (belt and suspenders)
+      - name: Clean node_modules
         run: rm -rf node_modules
         continue-on-error: true
 
+      - name: Upgrade npm # <--- NEW STEP: Upgrade npm explicitly
+        run: npm install -g npm@latest
+
       - name: Install dependencies
-        run: npm install # <--- CHANGED: Use 'npm install' instead of 'npm ci'
+        run: npm install # Using npm install as npm ci causes issues with rollup native modules
 
       - name: Build SvelteKit app
         run: npm run build
