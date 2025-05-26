@@ -28,19 +28,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20 # Use a stable Node.js version compatible with SvelteKit
-          cache: 'npm' # <--- CHANGED: Set cache to 'npm'
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: package-lock.json # <--- IMPORTANT: Explicitly cache this file
 
-      # - name: Setup pnpm # <--- REMOVED: No longer needed for npm
-      #   uses: pnpm/action-setup@v3
-      #   with:
-      #     version: 8
+      - name: Clean node_modules (optional, but good for troubleshooting) # <--- SLIGHTLY MODIFIED CLEAN STEP
+        run: rm -rf node_modules
+        continue-on-error: true # Ensure the workflow doesn't stop if node_modules doesn't exist
 
       - name: Install dependencies
-        run: npm ci # <--- CHANGED: Use 'npm ci' for clean install in CI environments
+        run: npm ci # This requires package-lock.json to be present
 
       - name: Build SvelteKit app
-        run: npm run build # <--- CHANGED: Use 'npm run build'
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
