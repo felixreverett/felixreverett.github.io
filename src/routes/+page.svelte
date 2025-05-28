@@ -162,10 +162,6 @@
     }
 
     @media (min-width: 768px) {
-        .hero-section h1 {
-            font-size: 3rem;
-        }
-        
         .projects-grid {
             grid-template-columns: repeat(2, 1fr);
         }

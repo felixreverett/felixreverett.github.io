@@ -1,10 +1,15 @@
 <svelte:head>
-    <title>Under Construction</title>
-    <meta name="robots" content="noindex">
+  <title>Portfolio | felixreverett.com</title>
+  <meta name="description" content="My Portfolio Page." />
 </svelte:head>
 
+<div class="page-wrapper">
+  <div class="hero-section">
+    <h1>Portfolio</h1>
+  </div>
+</div>
+
 <div class="c-container">
-    
     <div class="c-content">
         <h1>The Portfolio Page Is Under Construction</h1>
         <p>Please come back later :)</p>
@@ -17,7 +22,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: calc(100vh - 4rem);
         text-align: center;
     }
     .c-content {
