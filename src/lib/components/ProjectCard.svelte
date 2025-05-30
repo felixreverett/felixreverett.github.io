@@ -9,9 +9,6 @@
     export let projectLink = '#';
     export let githubLink = '#';
 
-    console.log('ProjectCard received projectLink:', projectLink);
-    console.log('ProjectCard received githubLink:', githubLink);
-
     $: displayedLogos = technologies
         .map(techKey => technologyLogos[techKey])
         .filter(Boolean);
