@@ -1,197 +1,313 @@
 <script>
-  import { page } from '$app/stores';
-  import { theme } from '$lib/stores/themeStore';
+	import { page } from '$app/stores';
+	import { theme } from '$lib/stores/themeStore';
+	import { browser } from '$app/environment';
 
-  const navLinks = [
-    { href: '/', text: 'Home' },
-    { href: '/about', text: 'About Me' },
-    { href: '/portfolio', text: 'Portfolio' },
-  ];
+	const navLinks = [
+		{ href: '/', text: 'Home' },
+		{ href: '/about', text: 'About Me' },
+		{ href: '/portfolio', text: 'Portfolio' },
+	];
 
-  let currentTheme;
-  theme.subscribe(value => {
-    currentTheme = value;
-  });
+	// --- Theme Logic ---
+	$: isDarkMode = $theme === 'dark';
 
-  $: isDarkMode = currentTheme === 'dark';
+	function toggleTheme() {
+		theme.toggle();
+	}
 
-  function toggleTheme() {
-    theme.toggle();
-  }
+	let mobileMenuOpen = false;
 
+	function toggleDropdown() {
+		mobileMenuOpen = !mobileMenuOpen;
+	}
+
+	function closeDropdown() {
+		mobileMenuOpen = false;
+	}
+
+	$: if ($page.url.pathname) {
+		mobileMenuOpen = false;
+	}
+
+	$: if (browser) {
+		document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
+	}
+
+    function handleClickOutside(event) {
+        if (mobileMenuOpen && !event.target.closest('.dropdown')) {
+            closeDropdown();
+        }
+    }
 </script>
 
-<nav>
-  <div class="nav-container">
-    <a href="/" class="logo">felixreverett.com</a>
-    <ul>
-      {#each navLinks as link}
-        <li>
-          <a
-            href={link.href}
-            class:active={$page.url.pathname === link.href || ($page.url.pathname.startsWith(link.href) && link.href !== '/')}
-            >
-            {link.text}
-          </a>
-        </li>
-      {/each}
-    </ul>
+<svelte:window on:click={handleClickOutside} />
 
-    <label class="theme-slider-container" aria-label="Toggle dark or light mode">
-      <input
-          type="checkbox"
-          bind:checked={isDarkMode}
-          on:change={toggleTheme}
-          class="sr-only"
-          aria-hidden="true"
-          tabindex="-1"
-      />
-      <span class="slider-track">
-          <span class="slider-thumb"></span>
-      </span>
-  </label>
-  </div>
+<nav class="main-nav">
+	<div class="nav-container desktop-theme-toggle">
+		<a href="/" class="logo">felixreverett.com</a>
+
+		<ul class="desktop-nav-links">
+			{#each navLinks as link}
+				<li>
+					<a
+						href={link.href}
+						class:active={$page.url.pathname === link.href || ($page.url.pathname.startsWith(link.href) && link.href !== '/')}
+						>
+						{link.text}
+					</a>
+				</li>
+			{/each}
+		</ul>
+
+		<label class="theme-slider-container desktop-theme-toggle" aria-label="Toggle dark or light mode">
+			<input
+				type="checkbox"
+				bind:checked={isDarkMode}
+				on:change={toggleTheme}
+				class="sr-only"
+			/>
+			<span class="slider-track">
+				<span class="slider-thumb"></span>
+			</span>
+		</label>
+	</div>
+
+	<div class="nav-container mobile-theme-toggle">
+		<a href="/" class="logo">felixreverett.com</a>
+
+		<div class="dropdown">
+			<button
+				on:click={toggleDropdown}
+				class="hamburger-menu"
+				aria-label="Toggle mobile navigation menu"
+				aria-expanded={mobileMenuOpen}
+				aria-controls="mobile-dropdown-menu">
+				<i class="{mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'}"></i>
+			</button>
+			<ul
+				id="myDropDown"
+				class="dropdown-content"
+				class:show={mobileMenuOpen}
+			>
+				{#each navLinks as link}
+					<li>
+						<a href={link.href}
+							class:active={$page.url.pathname === link.href || ($page.url.pathname.startsWith(link.href) && link.href !== '/')}
+						>
+							{link.text}
+						</a>
+					</li>
+				{/each}
+			</ul>
+        </div>
+
+	</div>
 </nav>
 
 <style>
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #1f2937;
-    color: #f9fafb;
-    padding: 1rem 0;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    transition: background-color 0.3s ease;
-  }
-
-  .nav-container {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    justify-items: center;
-    align-items: center;
-    padding: 0 1rem;
-  }
-
-  .logo {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #f9fafb;
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
-    justify-self: start;
-  }
-
-  .logo:hover {
-    color: #d1d5db;
-  }
-
-  ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    gap: 1rem;
-    justify-self: center;
-  }
-
-  li a {
-    color: #f9fafb;
-    text-decoration: none;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.375rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-  }
-
-  li a:hover {
-    color: #d1d5db;
-  }
-
-  li a.active {
-    font-weight: bold;
-    color: #00869d;
-  }
-
-  .theme-slider-container {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 32px;
-        cursor: pointer;
-        justify-self: end;
+	:root {
+        --nav-height: 64px;
     }
 
-  .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-  }
+	nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 1000;
+		background-color: #1f2937;
+		color: #f9fafb;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+		transition: background-color 0.3s ease;
+	}
 
-  .slider-track {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #f3f4f6;
-      border-radius: 34px;
-      transition: background-color 0.4s ease;
-  }
+	.nav-container {
+		max-width: 1280px;
+		margin-left: auto;
+		margin-right: auto;
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		justify-items: center;
+		align-items: center;
+		padding: 0 1rem;
+		height: var(--nav-height);
+	}
 
-  .slider-thumb {
-      position: absolute;
-      content: "";
-      height: 24px;
-      width: 24px;
-      left: 4px;
-      bottom: 4px;
-      background-color: #06131C;
-      border-radius: 50%;
-      transition: transform 0.6s ease;
-      box-shadow: 0 2px 2px rgba(0,0,0,0.2);
-  }
+	.logo {
+		font-size: 1.25rem;
+		font-weight: bold;
+		color: #f9fafb;
+		text-decoration: none;
+		transition: color 0.2s ease-in-out;
+		justify-self: start;
+		grid-column: 1;
+	}
 
-  .theme-slider-container input:checked + .slider-track {
-      background-color: #00869d;
-  }
+	.logo:hover {
+		color: #d1d5db;
+	}
 
-  .theme-slider-container input:checked + .slider-track .slider-thumb {
-      transform: translateX(26px);
-  }
+	.desktop-nav-links {
+		display: flex;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		gap: 1rem;
+		justify-self: center;
+		grid-column: 2;
+	}
 
-  :global(html[data-theme="dark"]) nav {
-      background-color: #06131C;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
-      color: #d1d5db;
-  }
+	.desktop-nav-links li a {
+		color: #f9fafb;
+		text-decoration: none;
+		padding: 0.5rem 0.75rem;
+		border-radius: 0.375rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+	}
 
-  :global(html[data-theme="dark"]) .logo {
-      color: #d1d5db;
-  }
+	.desktop-nav-links li a:hover {
+		color: #d1d5db;
+	}
 
-  :global(html[data-theme="dark"]) li a {
-      color: #9ca3af;
-  }
+	.desktop-nav-links li a.active {
+		font-weight: bold;
+		color: #00869d;
+	}
+	
+	.hamburger-menu {
+		background: none;
+		border: none;
+		color: #f9fafb;
+		font-size: 1.5rem;
+		cursor: pointer;
+		padding: 0.25rem 0.5rem;
+		z-index: 1001;
+		justify-self: end;
+	}
 
-  :global(html[data-theme="dark"]) li a:hover {
-      color: #ffffff;
-      background-color: #2d3748;
-  }
+    .hamburger-menu .fas.fa-times {
+        transform: rotate(90deg);
+    }
 
-  :global(html[data-theme="dark"]) li a.active {
-      color: #e5e7eb;
-  }
+	.dropdown {
+		position: relative;
+		display: inline-block;
+	}
+
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: #f9f9f9;
+		min-width: 160px;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		top: 100%;
+		right: 0;
+	}
+
+	.dropdown-content.show {
+		display: block;
+	}
+
+	.dropdown-content li a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+
+	.dropdown-content li a:hover {
+		background-color: #f1f1f1;
+	}
+
+	/* --- Media Queries --- */
+
+	@media (max-width: 768px) {
+		.nav-container {
+			grid-template-columns: auto 1fr auto;
+			justify-items: unset;
+		}
+
+		.logo {
+			grid-column: 1;
+			justify-self: start;
+		}
+
+		.desktop-theme-toggle {
+			display: none;
+		}
+
+		.mobile-theme-toggle {
+			display: grid;
+		}
+
+		.hamburger-menu {
+			display: block;
+		}
+	}
+
+	@media (min-width: 769px) {
+		.desktop-nav-links {
+			display: flex;
+		}
+
+		.desktop-theme-toggle {
+			display: grid;
+		}
+
+		.mobile-theme-toggle {
+			display: none;
+		}
+
+		.hamburger-menu {
+			display: none;
+		}
+
+		:global(body) {
+			overflow: auto !important;
+		}
+	}
+
+	/* --- Dark Mode Adaptations --- */
+	:global(html[data-theme="dark"]) .main-nav {
+		background-color: #06131C;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+		color: #d1d5db;
+	}
+
+	:global(html[data-theme="dark"]) .logo {
+		color: #d1d5db;
+	}
+
+	:global(html[data-theme="dark"]) .desktop-nav-links li a {
+		color: #9ca3af;
+	}
+
+	:global(html[data-theme="dark"]) .desktop-nav-links li a:hover {
+		color: #ffffff;
+		background-color: #2d3748;
+	}
+
+	:global(html[data-theme="dark"]) .desktop-nav-links li a.active {
+		color: #e5e7eb;
+	}
+
+	:global(html[data-theme="dark"]) .dropdown-content {
+		background-color: #06131C;
+	}
+
+	:global(html[data-theme="dark"]) .dropdown-content li a {
+		color: #9ca3af;
+	}
+
+	:global(html[data-theme="dark"]) .dropdown-content li a:hover {
+		background-color: #2d3748;
+		color: #ffffff;
+	}
 </style>

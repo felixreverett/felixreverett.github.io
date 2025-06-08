@@ -21,14 +21,23 @@
             }
         } catch (e) {
             console.error("Could not access localStorage for theme.", e);
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            initialTheme = prefersDark ? 'dark' : 'light';
         }
 
         document.documentElement.setAttribute('data-theme', initialTheme);
-        if (initialTheme === 'dark') {
-            document.body.classList.add('dark');
-        } else {
-            document.body.classList.remove('dark');
-        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (initialTheme === 'dark') {
+                if (document.body) {
+                    document.body.classList.add('dark');
+                }
+            } else {
+                if (document.body) {
+                    document.body.classList.remove('dark');
+                }
+            }
+        });
     })();
 </script>
 %sveltekit.head%
