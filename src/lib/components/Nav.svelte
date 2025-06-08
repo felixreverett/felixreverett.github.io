@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { theme } from '$lib/stores/themeStore';
 	import { browser } from '$app/environment';
+	import DarkModeToggle from './DarkModeToggle.svelte';
 
 	const navLinks = [
 		{ href: '/', text: 'Home' },
@@ -60,17 +61,7 @@
 			{/each}
 		</ul>
 
-		<label class="theme-slider-container desktop-theme-toggle" aria-label="Toggle dark or light mode">
-			<input
-				type="checkbox"
-				bind:checked={isDarkMode}
-				on:change={toggleTheme}
-				class="sr-only"
-			/>
-			<span class="slider-track">
-				<span class="slider-thumb"></span>
-			</span>
-		</label>
+		<DarkModeToggle />
 	</div>
 
 	<div class="nav-container mobile-theme-toggle">
