@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { theme } from '$lib/stores/themeStore';
 	import { browser } from '$app/environment';
+	import DarkModeToggle from './DarkModeToggle.svelte';
 
 	const navLinks = [
 		{ href: '/', text: 'Home' },
@@ -60,17 +61,7 @@
 			{/each}
 		</ul>
 
-		<label class="theme-slider-container desktop-theme-toggle" aria-label="Toggle dark or light mode">
-			<input
-				type="checkbox"
-				bind:checked={isDarkMode}
-				on:change={toggleTheme}
-				class="sr-only"
-			/>
-			<span class="slider-track">
-				<span class="slider-thumb"></span>
-			</span>
-		</label>
+		<DarkModeToggle />
 	</div>
 
 	<div class="nav-container mobile-theme-toggle">
@@ -99,6 +90,9 @@
 						</a>
 					</li>
 				{/each}
+				<li class="dropdown-theme-toggle-item">
+                    <DarkModeToggle />
+                </li>
 			</ul>
         </div>
 
@@ -200,7 +194,7 @@
 	.dropdown-content {
 		display: none;
 		position: absolute;
-		background-color: #f9f9f9;
+		background-color: #1f2937;
 		min-width: 160px;
 		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 		z-index: 1;
@@ -209,6 +203,7 @@
 		margin: 0;
 		top: 100%;
 		right: 0;
+		transition: color 0.3s ease, background-color 0.3s ease;
 	}
 
 	.dropdown-content.show {
@@ -216,15 +211,26 @@
 	}
 
 	.dropdown-content li a {
-		color: black;
+		color: #f9fafb;
 		padding: 12px 16px;
 		text-decoration: none;
 		display: block;
+		transition: background-color 0.2s ease, color 0.2s ease;
 	}
 
 	.dropdown-content li a:hover {
-		background-color: #f1f1f1;
+		background-color: #0D1B26;
 	}
+
+	.dropdown-content li a.active {
+		font-weight: bold;
+		color: #00869d;
+	}
+
+	.dropdown-theme-toggle-item {
+        display: flex;
+        padding: 12px 16px;
+    }
 
 	/* --- Media Queries --- */
 
@@ -309,5 +315,10 @@
 	:global(html[data-theme="dark"]) .dropdown-content li a:hover {
 		background-color: #2d3748;
 		color: #ffffff;
+	}
+
+	:global(html[data-theme="dark"]) .dropdown-content li a.active {
+		font-weight: bold;
+		color: #e5e7eb;
 	}
 </style>
