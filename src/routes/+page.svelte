@@ -145,6 +145,7 @@
     .projects-grid {
         display: grid;
         gap: 2rem;
+        justify-items: center;
     }
 
     .secondary-button {
@@ -161,15 +162,9 @@
         background-color: #4b5563;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 800px) {
         .projects-grid {
             grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .projects-grid {
-            grid-template-columns: repeat(3, 1fr);
         }
     }
 </style>
