@@ -46,7 +46,6 @@ body.dark {
     transition: background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
     display: flex;
     flex-direction: column;
-    height: 100%;
     border: 1px solid #42deb9;
     border-top: 8px solid #42deb9;
 }

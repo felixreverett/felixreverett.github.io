@@ -14,7 +14,7 @@
 		.filter(Boolean);
 </script>
 
-<div class="card project-card">
+<div class="project-card">
 	<div class="project-image-container">
 		<img src={imageSrc} alt={imageAlt} class="project-image" />
 	</div>
@@ -32,11 +32,31 @@
 </div>
 
 <style>
+	/* ===== Project Card ===== */
+
 	.project-card {
+		/* This bit lifted from .card styling */
+		background-color: #1f2937;
+		padding: 1.5rem;
+		border-radius: 0.5rem;
+		box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+		transition: background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+		display: flex;
+		flex-direction: column;
+		border: 1px solid #42deb9;
+		border-top: 8px solid #42deb9;
+		/* end lifted section */
 		transition: box-shadow 0.3s ease;
 		max-width: 368px;
 		display: flex;
 		flex-direction: column;
+	}
+
+	:global(html[data-theme="dark"]) .project-card {
+		background-color: #1f2937; /* Intentionally same as light mode */
+		border: 1px solid #038299;
+		border-top: 8px solid #038299;
+		transition: background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 	}
 
 	.project-card:hover {
@@ -47,10 +67,6 @@
 
 	h3 {
 		color: #e5e7eb;
-	}
-
-	html[data-theme="dark"] h3 {
-		color: #e5e7eb; /* Intentionally same as LM */
 	}
 
 	/* ===== CARD-FOOTER ===== */
