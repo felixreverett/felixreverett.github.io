@@ -10,6 +10,7 @@
       title: 'wildfawn SEO Crawler',
       description: 'Open-Source lightweight SEO web crawler built in Go. I\'m currently developing a frontend using Svelte and Wails.',
       technologies: ['golang', 'svelte', 'javascript', 'wails'],
+      categories: ['web', 'backend', 'desktop apps', 'open-source'],
       projectLink: '/portfolio/wildfawn',
       githubLink: 'https://github.com/felixreverett/wildfawn'
     },
@@ -20,6 +21,7 @@
       title: 'Isola',
       description: 'An open-world exploration game built from the ground up in C# and OpenGL.',
       technologies: ['csharp', 'opengl'],
+      categories: ['game development', 'graphics', 'desktop apps'],
       projectLink: '/portfolio/isola',
       githubLink: 'https://github.com/felixreverett/isola'
     },
@@ -30,6 +32,7 @@
       title: 'Advent Of Code',
       description: 'My JavaScript and Go solutions to the popular Advent Of Code DSA puzzles.',
       technologies: ['javascript', 'golang'],
+      categories: ['algorithms', 'problem-solving', 'javascript', 'golang'],
       projectLink: '/portfolio/aoc',
       githubLink: 'https://github.com/felixreverett/AdventOfCode2024'
     }
@@ -87,8 +90,10 @@
                     />
                 {/each}
             </div>
-            <div class="section-link-wrapper"> <a href="/portfolio" class="secondary-button">
-                    See All Projects
+            <div class="section-link-wrapper"><a href="/portfolio" class="secondary-button">
+                <span class="secondary-button-text">
+                    See Full Portfolio
+                </span>
                 </a>
             </div>
         </div>
@@ -143,13 +148,16 @@
     }
 
     .projects-grid {
-        display: grid;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 2rem;
+        padding-bottom: 2rem;
+        align-items: stretch;
     }
 
     .secondary-button {
         background-color: #374151;
-        color: #e5e7eb;
         font-weight: 600;
         padding: 0.5rem 1.5rem;
         border-radius: 0.5rem;
@@ -157,19 +165,16 @@
         box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
         transition: background-color 0.3s ease;
     }
+
     .secondary-button:hover {
         background-color: #4b5563;
     }
 
-    @media (min-width: 768px) {
-        .projects-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
+    .secondary-button-text {
+        background-clip: text;
+        background-image: linear-gradient(to left, #00869d, #42deb9);
+        color: transparent;
     }
 
-    @media (min-width: 1024px) {
-        .projects-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
+    
 </style>
