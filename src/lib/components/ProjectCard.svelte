@@ -34,7 +34,9 @@
 <style>
 	.project-card {
 		transition: box-shadow 0.3s ease;
-		max-width: 390px;
+		max-width: 368px;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.project-card:hover {
@@ -57,7 +59,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-top: 1.5rem;
+		margin-top: auto;
 		padding-top: 1rem;
 		border-top: 1px solid #e5e7eb;
 		transition: border 0.3s ease;
@@ -116,7 +118,6 @@
 		color: #00869d;
 		font-weight: 500;
 		text-decoration: none;
-		margin-top: auto;
 		display: inline-block;
 	}
 

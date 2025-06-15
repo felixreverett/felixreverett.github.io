@@ -6,7 +6,7 @@ export const projects = [
       title: 'wildfawn SEO Crawler',
       description: 'Open-Source lightweight SEO web crawler built in Go. I\'m currently developing a frontend using Svelte and Wails.',
       technologies: ['golang', 'svelte', 'javascript', 'wails'],
-      categories: ['web', 'backend', 'desktop apps'],
+      categories: ['backend', 'desktop apps'],
       projectLink: '/portfolio/wildfawn',
       githubLink: 'https://github.com/felixreverett/wildfawn'
     },
@@ -17,7 +17,7 @@ export const projects = [
       title: 'Isola',
       description: 'An open-world exploration game built from the ground up in C# and OpenGL.',
       technologies: ['csharp', 'opengl'],
-      categories: ['game development', 'graphics', 'desktop apps'],
+      categories: ['game development', 'graphics programming', 'desktop apps'],
       projectLink: '/portfolio/isola',
       githubLink: 'https://github.com/felixreverett/isola'
     },
@@ -28,7 +28,7 @@ export const projects = [
       title: 'Advent Of Code',
       description: 'My JavaScript and Go solutions to the popular Advent Of Code DSA puzzles.',
       technologies: ['javascript', 'golang'],
-      categories: ['algorithms', 'javascript'],
+      categories: ['algorithms'],
       projectLink: '/portfolio/aoc',
       githubLink: 'https://github.com/felixreverett/AdventOfCode2024'
     },
@@ -39,7 +39,7 @@ export const projects = [
       title: 'felixreverett.com',
       description: 'My personal website and portfolio showcase, written in JavaScript and Svelte.',
       technologies: ['javascript', 'svelte'],
-      categories: ['web', 'javascript'],
+      categories: ['web dev'],
       projectLink: '/portfolio/aoc',
       githubLink: 'https://github.com/felixreverett/felixreverett.github.io'
     }
