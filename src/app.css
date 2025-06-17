@@ -1,3 +1,15 @@
+@property --bg-angle {
+    inherits: false;
+    initial-value: 0deg;
+    syntax: "<angle>";
+}
+
+@keyframes spin {
+    to {
+        --bg-angle: 360deg;
+    }
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -101,7 +113,7 @@ html[data-theme="dark"] h3 {
 /* ===== Hero Section ===== */
 .hero-section {
     text-align: center;
-    padding: 5rem 1rem;
+    padding: 1rem 1rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;

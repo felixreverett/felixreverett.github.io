@@ -40,31 +40,32 @@
 </script>
 
 <svelte:head>
-  <title>Home | felixreverett.com</title>
-  <meta name="description" content="Welcome to my personal portfolio website." />
+    <title>Home | felixreverett.com</title>
+    <meta name="description" content="Welcome to my personal portfolio website." />
 </svelte:head>
 
 <div class="page-wrapper">
-  <div class="hero-section">
-    <h1>Hi, I'm Felix</h1>
-  </div>
-
-  <section class="content-section">
-        <div class="content-container content-about-me">
-            <div class="card about-card">
-                <p>
-                    I’m a <b>code enthusiast</b> with an ambition to make my dream projects a reality.
-                    I mostly write in <b>Go</b>, <b>C#</b>, and <b>JavaScript</b>, and I have prior experience in <b>Python</b> and <b>SQL</b>, but I am most at home with statically typed, compiled paradigms.
-                </p>
-                <p>
-                    For me, code is both a creative outlet and an opportunity to try new puzzles and challenges.
-                    I have always been fascinated by how computers work, and I am motivated more than ever by the belief that the only true way to satisfy my questions is to keep writing code, no matter the project, until I get there.
-                </p>
-                <p>
-                    Read on and <a href="/portfolio/">browse my full portfolio</a>, learn about <a href="/about/">what I do beyond coding</a>, and <a href="https://linkedin.com/in/felixreverett" target="_blank">connect with me on LinkedIn</a>.
-                </p>
-            </div>
-        </div>
+    <div class="hero-section">
+        <h1>Hi, I'm Felix</h1>
+    </div>
+    <section class="content-section">
+    <p>
+        I’m a <b>code enthusiast</b> with an ambition to make my dream projects a reality.
+        I mostly write in <b>Go</b>, <b>C#</b>, and <b>JavaScript</b>, and I have prior experience in
+        <b>Python</b> and <b>SQL</b>, but I am most at home with statically typed, compiled paradigms.
+    </p>
+    <p>
+        For me, code is both a creative outlet and an opportunity to try new puzzles and challenges.
+        I have always been fascinated by how computers work, and I am motivated more than ever by the
+        belief that the only true way to satisfy my questions is to keep writing code, no matter the project,
+        until I get there.
+    </p>
+    <p>
+        Read on and <a href="/portfolio/">browse my full portfolio</a>, learn about <a href="/about/">what I do
+        beyond coding</a>, and <a href="https://linkedin.com/in/felixreverett" target="_blank">connect with me
+        on LinkedIn</a>.
+    </p>
+            
     </section>
 
     <section class="content-section">
@@ -108,7 +109,7 @@
     }
 
     .content-section {
-        margin-top: 4rem;
+        margin-bottom: 3rem;
         box-sizing: border-box;
         width: 100%;
     }
@@ -157,24 +158,42 @@
     }
 
     .secondary-button {
-        background-color: #374151;
         font-weight: 600;
         padding: 0.5rem 1.5rem;
         border-radius: 0.5rem;
         text-decoration: none;
         box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
-        transition: background-color 0.3s ease;
+
+        background-color: #374151;
+        border: 3px solid transparent;
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+        background-image:
+            linear-gradient(to bottom, #374151, #374151),
+            conic-gradient(from var(--bg-angle), transparent 0%, transparent 100%);
+
+        animation: spin 2.5s infinite linear paused;
+        transition: background-image 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .secondary-button:hover {
+        animation-play-state: running;
         background-color: #4b5563;
+        background-image:
+            linear-gradient(to bottom, #4b5563, #4b5563),
+            conic-gradient(
+                from var(--bg-angle),
+                #00869d 0%,
+                #42deb9 50%,
+                #00869d 100%
+            );
     }
 
     .secondary-button-text {
         background-clip: text;
         background-image: linear-gradient(to left, #00869d, #42deb9);
         color: transparent;
+        position: relative;
+        z-index: 2;
     }
-
-    
 </style>
