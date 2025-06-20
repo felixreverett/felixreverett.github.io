@@ -37,10 +37,10 @@ export const projects = [
       imageSrc: '/images/aoc-screenshot.webp',
       imageAlt: 'Screenshot of felixreverett website',
       title: 'felixreverett.com',
-      description: 'My personal website and portfolio showcase, written in JavaScript and Svelte.',
+      description: 'My personal website and portfolio showcase, statically-deployed with Github Actions and SvelteKit.',
       technologies: ['javascript', 'svelte'],
       categories: ['web dev'],
-      projectLink: '/portfolio/aoc',
+      projectLink: '/',
       githubLink: 'https://github.com/felixreverett/felixreverett.github.io'
     }
   ];
