@@ -104,7 +104,9 @@
         --nav-height: 64px;
     }
 
-	nav {
+	/* ===== Main Nav ===== */
+
+	.main-nav {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -115,6 +117,14 @@
 		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 		transition: background-color 0.3s ease;
 	}
+
+	:global(html[data-theme="dark"]) .main-nav {
+		background-color: #06131C;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+		color: #d1d5db;
+	}
+
+	/* ===== Container for logo | links | mode toggle ===== */
 
 	.nav-container {
 		max-width: 1280px;
@@ -128,6 +138,8 @@
 		height: var(--nav-height);
 	}
 
+	/* ===== Logo ===== */
+	
 	.logo {
 		font-size: 1.25rem;
 		font-weight: bold;
@@ -136,6 +148,10 @@
 		transition: color 0.2s ease-in-out;
 		justify-self: start;
 		grid-column: 1;
+	}
+
+	:global(html[data-theme="dark"]) .logo {
+		color: #d1d5db;
 	}
 
 	.logo:hover {
@@ -162,15 +178,30 @@
 		transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 	}
 
+	:global(html[data-theme="dark"]) .desktop-nav-links li a {
+		color: #9ca3af;
+	}
+
 	.desktop-nav-links li a:hover {
 		color: #d1d5db;
+	}
+
+	:global(html[data-theme="dark"]) .desktop-nav-links li a:hover {
+		color: #ffffff;
+		background-color: #2d3748;
 	}
 
 	.desktop-nav-links li a.active {
 		font-weight: bold;
 		color: #00869d;
 	}
+
+	:global(html[data-theme="dark"]) .desktop-nav-links li a.active {
+		color: #e5e7eb;
+	}
 	
+	/* ===== Mobile Hamburger ===== */
+
 	.hamburger-menu {
 		background: none;
 		border: none;
@@ -281,28 +312,9 @@
 	}
 
 	/* --- Dark Mode Adaptations --- */
-	:global(html[data-theme="dark"]) .main-nav {
-		background-color: #06131C;
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
-		color: #d1d5db;
-	}
+	
 
-	:global(html[data-theme="dark"]) .logo {
-		color: #d1d5db;
-	}
-
-	:global(html[data-theme="dark"]) .desktop-nav-links li a {
-		color: #9ca3af;
-	}
-
-	:global(html[data-theme="dark"]) .desktop-nav-links li a:hover {
-		color: #ffffff;
-		background-color: #2d3748;
-	}
-
-	:global(html[data-theme="dark"]) .desktop-nav-links li a.active {
-		color: #e5e7eb;
-	}
+	
 
 	:global(html[data-theme="dark"]) .dropdown-content {
 		background-color: #06131C;
