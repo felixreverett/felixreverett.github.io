@@ -35,9 +35,13 @@
 		document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
 	}
 
-    function handleClickOutside(event) {
-        if (mobileMenuOpen && !event.target.closest('.dropdown')) {
-            closeDropdown();
+	function handleClickOutside(event) {
+        if (mobileMenuOpen) {
+            const clickedOnHamburgerArea = event.target.closest('.dropdown');
+            const clickedOnDropdownContent = event.target.closest('.dropdown-content');
+            if (!clickedOnHamburgerArea && !clickedOnDropdownContent) {
+                closeDropdown();
+            }
         }
     }
 </script>
@@ -76,28 +80,28 @@
 				aria-controls="mobile-dropdown-menu">
 				<i class="{mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'}"></i>
 			</button>
-			<ul
-				id="myDropDown"
-				class="dropdown-content"
-				class:show={mobileMenuOpen}
-			>
-				{#each navLinks as link}
-					<li>
-						<a href={link.href}
-							class:active={$page.url.pathname === link.href || ($page.url.pathname.startsWith(link.href) && link.href !== '/')}
-						>
-							{link.text}
-						</a>
-					</li>
-				{/each}
-				<li class="dropdown-theme-toggle-item">
-                    <DarkModeToggle />
-                </li>
-			</ul>
         </div>
-
 	</div>
 </nav>
+
+<ul
+	id="myDropDown"
+	class="dropdown-content"
+	class:show={mobileMenuOpen}
+>
+	{#each navLinks as link}
+		<li>
+			<a href={link.href}
+				class:active={$page.url.pathname === link.href || ($page.url.pathname.startsWith(link.href) && link.href !== '/')}
+			>
+				{link.text}
+			</a>
+		</li>
+	{/each}
+	<li class="dropdown-theme-toggle-item">
+		<DarkModeToggle />
+	</li>
+</ul>
 
 <style>
 	:root {
@@ -112,16 +116,20 @@
 		left: 0;
 		width: 100%;
 		z-index: 1000;
-		background-color: #1f2937;
+		background-color: rgba(31, 41, 55, 0.5);
 		color: #f9fafb;
 		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 		transition: background-color 0.3s ease;
+		backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(31, 41, 55);
 	}
 
 	:global(html[data-theme="dark"]) .main-nav {
-		background-color: #06131C;
+		background-color: rgba(6, 19, 21, 0.5);
 		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
 		color: #d1d5db;
+		backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(6, 19, 21);
 	}
 
 	/* ===== Container for logo | links | mode toggle ===== */
@@ -139,7 +147,7 @@
 	}
 
 	/* ===== Logo ===== */
-	
+
 	.logo {
 		font-size: 1.25rem;
 		font-weight: bold;
@@ -193,7 +201,7 @@
 
 	.desktop-nav-links li a.active {
 		font-weight: bold;
-		color: #00869d;
+		color: rgba(66, 222, 185, 1);
 	}
 
 	:global(html[data-theme="dark"]) .desktop-nav-links li a.active {
@@ -224,17 +232,27 @@
 
 	.dropdown-content {
 		display: none;
-		position: absolute;
-		background-color: #1f2937;
+		position: fixed;
+		background-color: rgba(31, 41, 55, 0.5);
+		backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(31, 41, 55, 1);
+		border-left: 1px solid rgba(31, 41, 55, 1);
 		min-width: 160px;
 		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-		z-index: 1;
+		z-index: 1001;
 		list-style: none;
 		padding: 0;
 		margin: 0;
-		top: 100%;
-		right: 0;
+		top: 64px;
+		right: 0px;
 		transition: color 0.3s ease, background-color 0.3s ease;
+	}
+
+	:global(html[data-theme="dark"]) .dropdown-content {
+		background-color: rgba(6, 19, 28, 0.5);
+		border-bottom: 1px solid rgba(6, 19, 28, 1);
+		border-left: 1px solid rgba(6, 19, 28, 1);
+		backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 	}
 
 	.dropdown-content.show {
@@ -255,7 +273,7 @@
 
 	.dropdown-content li a.active {
 		font-weight: bold;
-		color: #00869d;
+		color: rgba(66, 222, 185, 1);
 	}
 
 	.dropdown-theme-toggle-item {
@@ -312,13 +330,6 @@
 	}
 
 	/* --- Dark Mode Adaptations --- */
-	
-
-	
-
-	:global(html[data-theme="dark"]) .dropdown-content {
-		background-color: #06131C;
-	}
 
 	:global(html[data-theme="dark"]) .dropdown-content li a {
 		color: #9ca3af;

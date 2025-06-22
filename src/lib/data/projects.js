@@ -34,7 +34,7 @@ export const projects = [
     },
     {
       id: 4,
-      imageSrc: '/images/aoc-screenshot.webp',
+      imageSrc: '/images/felixreverett-app-screenshot.webp',
       imageAlt: 'Screenshot of felixreverett website',
       title: 'felixreverett.com',
       description: 'My personal website and portfolio showcase, statically-deployed with Github Actions and SvelteKit.',

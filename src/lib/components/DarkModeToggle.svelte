@@ -54,6 +54,10 @@
         transition: background-color 0.4s ease;
     }
 
+    :global(html[data-theme="dark"]) .slider-track {
+        background-color: #374151;
+    }
+
     .slider-thumb {
         position: absolute;
         content: "";
@@ -61,10 +65,18 @@
         width: 24px;
         left: 4px;
         bottom: 4px;
-        background-color: #1f2937;
+        background-color: rgba(31, 41, 55, 0.5);
+        backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
         border-radius: 50%;
         transition: transform 0.6s ease;
         box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+        transition: background-color 0.6s ease, transform 0.6s ease;
+    }
+
+    :global(html[data-theme="dark"]) .slider-thumb {
+        background-color: rgba(209, 213, 219, 0.75);
+        backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        transition: background-color 0.6s ease, transform 0.6s ease;
     }
 
     .theme-slider-container input:checked + .slider-track {
@@ -75,16 +87,7 @@
         transform: translateX(26px);
     }
 
-    /* --- Dark Mode --- */
-    :global(html[data-theme="dark"]) .slider-track {
-        background-color: #374151;
-    }
-
-    :global(html[data-theme="dark"]) .slider-thumb {
-        background-color: #06131C;
-    }
-
     :global(html[data-theme="dark"]) .theme-slider-container input:checked + .slider-track {
-        background-color: #00869d;
+        background-color: #0D1B26;
     }
 </style>
