@@ -44,17 +44,15 @@
 
 		<p>The <b>crawl()</b> function fetches and parses all HTML, then returns to GoWild() a list of URLObject structs containing SEO-relevant metrics for every URL found in the crawl. A receiver function runPostCrawl() is called on the list to populate any metrics not collectable until after the crawl, before the data is sent back to wherever GoWild() was called from.</p>
 		<h3>Robots</h3>
-
-
 	</section>
-
 </div>
 
 <style>
     .image-placeholder {
 		max-width: 800px;
+		height: auto;
 		width: 100%;
-		aspect-ratio: 3 / 2;
+		aspect-ratio: 2 / 1;
 		display: flex;
 		justify-content: center;
 		align-items: center;

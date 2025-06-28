@@ -35,10 +35,13 @@
 </div>
 
 <style>
+  /* All content fits inside this. Padding included here.*/
   .site-wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    padding-left: 1em;
+    padding-right: 1em;
   }
 
   .main-content {

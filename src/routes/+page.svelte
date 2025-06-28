@@ -102,12 +102,6 @@
 </div>
 
 <style>
-    .page-wrapper {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
     .content-section {
         margin-bottom: 3rem;
         box-sizing: border-box;
@@ -121,21 +115,8 @@
         text-align: left;
     }
 
-    .content-about-me {
-        max-width: 800px;
-    }
-
     .content-featured-projects {
         max-width: 1200px;
-    }
-
-    .card p {
-        color: #e5e7eb;
-        margin-bottom: 1rem;
-    }
-
-    .card p:last-child {
-        margin-bottom: 0;
     }
 
     .section-link-wrapper {
