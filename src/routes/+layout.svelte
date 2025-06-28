@@ -1,3 +1,5 @@
+<!-- Sitewide layout. Applies Head, Nav, and Footer around main content -->
+
 <script>
   import Nav from '../lib/components/Nav.svelte';
   import Footer from '../lib/components/Footer.svelte';
