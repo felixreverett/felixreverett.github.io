@@ -51,7 +51,7 @@
     <section class="content-section">
     <p>
         I’m a <b>code enthusiast</b> with an ambition to make my dream projects a reality.
-        I mostly write in <b>Go</b>, <b>C#</b>, and <b>JavaScript</b>, and I have prior experience in
+        I mainly write in <b>Go</b>, <b>C#</b>, and <b>JavaScript</b>, and I have prior experience in
         <b>Python</b> and <b>SQL</b>, but I am most at home with statically typed, compiled paradigms.
     </p>
     <p>
