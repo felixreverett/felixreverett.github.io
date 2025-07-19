@@ -16,7 +16,11 @@
 		<p>Thanks in no small part to my time spent on Advent of Code, whose subtle lessons on Data Structures and Algorithms introduced me to a suite of techniques that you’ll find in this project, I was able to cook up a simple prototype one Friday evening, and the rest is history!</p>
 		<p>No fawns were hurt in the development of this project.</p>
 
-		
+		<figure class="image-wrapper">
+			<img src="/images/wildfawn-original.png" alt="The original version of wildfawn.">
+			<figcaption>The first version of wildfawn</figcaption>
+		</figure>
+
 		<h2>Features of wildfawn</h2>
 		<p>The core workflow of the crawler is simple:</p>
 		<ol>
@@ -43,19 +47,54 @@
 		<div class="image-placeholder">IMAGE</div>
 
 		<p>The <b>crawl()</b> function fetches and parses all HTML, then returns to GoWild() a list of URLObject structs containing SEO-relevant metrics for every URL found in the crawl. A receiver function runPostCrawl() is called on the list to populate any metrics not collectable until after the crawl, before the data is sent back to wherever GoWild() was called from.</p>
-		<h3>Robots</h3>
+		
+		<h3>robotsManager.go</h3>
+		<p>The robots.txt file is a standardised set of instructions that lets willing crawlers know which parts of a given website they should or should not crawl. It consists of a list of <b>User Agents</b> and <b>Sitemaps</b>, and a semi-supported <b>Crawl Delay</b>, which allow web crawlers to operate under a set of voluntary restrictions. The keyword here is voluntary - there is nothing to prevent web crawlers from ignoring these requirements - but the largest corporate crawlers generally do.</p>
+		<p>The first parameter, <b>User Agent</b>, is used to provide instructions to specific crawlers, such as to Googlebot or AhrefsBot. It will be followed by lists of paths which can be disallowed or allowed. A website might, for instance, request that crawlers do not send traffic to its purely functional pages.</p>
+		<p>The next parameter, <b>Sitemap</b>, allows the website to list paths to any sitemaps, to facilitate the discovery of pages on the site.</p>
+		<p>Lastly, <b>Crawl Delay</b>, while not observed by Google, instructs willing user agents to wait a set amount of time between requests to ease server load.</p>
+		<p>Aside from parsing robots as a gesture of good faith (wildfawn users can opt to respect it via the program config), there are some vital SEO benefits to including this process in the crawler, too:</p>
+		<ul>
+		<li>Sitemaps can be used to identify any orphan (unlinked) URLs, that would otherwise not be found through link traversal.</li>
+		<li>Conversely, sitemaps can be checked for non-existent URLs.</li>
+		<li>Identifying non-indexable URLs or entire folders caused by robots.txt blocking.</li>
+		</ul>
+
 	</section>
 </div>
 
 <style>
-    .image-placeholder {
+    .image-wrapper {
+		max-width: 800px;
+		width: 100%;
+		height: auto;
+		position: relative;
+		overflow: hidden;
+		margin: 0 auto;
+	}
+
+	.image-wrapper img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	.image-wrapper figcaption {
+		font-size: 0.9em;
+		color: #555;
+		text-align: center;
+		margin-top: 0.5rem;
+	}
+
+	.image-placeholder {
 		max-width: 800px;
 		height: auto;
 		width: 100%;
-		aspect-ratio: 2 / 1;
+		aspect-ratio: 3 / 1;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		background-color: #f0f0f0;
+		object-fit: cover;
 	}
 </style>
