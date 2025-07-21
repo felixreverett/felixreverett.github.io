@@ -61,7 +61,7 @@
         until I get there.
     </p>
     <p>
-        Read on and <a href="/portfolio/">browse my full portfolio</a>, learn about <a href="/about/">what I do
+        Read on and <a href="/portfolio">browse my full portfolio</a>, learn about <a href="/about">what I do
         beyond coding</a>, and <a href="https://linkedin.com/in/felixreverett" target="_blank">connect with me
         on LinkedIn</a>.
     </p>
