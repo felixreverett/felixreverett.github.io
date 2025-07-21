@@ -6,7 +6,6 @@
 <div class="page-wrapper">
 	<div class="hero-section">
 		<h1>Wildfawn SEO Web Crawler</h1>
-		<div class="image-placeholder">IMAGE</div>
 	</div>
 
 	<section class="content-section">
@@ -18,7 +17,7 @@
 
 		<figure class="image-wrapper">
 			<img src="/images/wildfawn-original.png" alt="The original version of wildfawn.">
-			<figcaption>The first version of wildfawn</figcaption>
+			<figcaption>The first version of wildfawn ran everything from the GoWild() function</figcaption>
 		</figure>
 
 		<h2>Features of wildfawn</h2>
@@ -39,13 +38,9 @@
 		<p>Reading robots.txt is a critical step towards enabling several of the more advanced SEO metrics collectable in a site crawl, and warranted its own collection of relevant functions in <b>robotsManager.go</b>.</p>
 		<p>The following step is to crawl the site itself, deferring to the internal function crawl(), which uses a queue and a makeshift set to crawl all discovered URLs and ignore already-crawled pages entirely. If robots.txt is respected at this stage (configured by the user) <b>fawnbot</b> will not crawl any disallowed URLs.</p>
 
-		<div class="image-placeholder">IMAGE</div>
-
 		<p>To the veteran web scraper, perhaps it is obvious that a queue is the most suitable data structure for this challenge, but for those less inclined I would like to briefly touch on this decision. Recursion is a powerful addition to the developer’s toolkit, and yet I generally make a conscious decision to avoid it in my work. Beyond the clear risk of exceeding the maximum call stack, my many hours <a href="/portfolio/aoc">solving Advent of Code puzzles</a> has taught me that recursion struggles with scalability, is inherently complex, and unless you’re very careful with passing data through methods, it is highly prone to human error.</p>
 		<p>In wildfawn specifically, there are further reasons why an alternative solution makes sense. By employing a queue, I can traverse the target site breadth-first, tracking the crawl-depth of pages (as long as no http requests are refused). Using Go’s equivalent of a set, I can dynamically ensure no URL is fetched or crawled twice, eliminating all program overhead.</p>
 		
-		<div class="image-placeholder">IMAGE</div>
-
 		<p>The <b>crawl()</b> function fetches and parses all HTML, then returns to GoWild() a list of URLObject structs containing SEO-relevant metrics for every URL found in the crawl. A receiver function runPostCrawl() is called on the list to populate any metrics not collectable until after the crawl, before the data is sent back to wherever GoWild() was called from.</p>
 		
 		<h3>robotsManager.go</h3>
@@ -60,12 +55,32 @@
 		<li>Identifying non-indexable URLs or entire folders caused by robots.txt blocking.</li>
 		</ul>
 
+		<h3>analysis.go, postcrawl.go</h3>
+		<p>Many of the metrics wildfawn collects can be collected and calculated as the crawl happens, but there are others (such as total URLs within a category) that can only be calculated post-crawl through an analysis of the data. The <b>analysis.go</b> and <b>postcrawl.go</b> files are designed to serve that purpose, executing after a crawl completes to provide both a summary of the crawl, and the collection of more nuanced metrics.</p>
+		<figure class="image-wrapper">
+			<img src="/images/wildfawn-analyse-crawl.png" alt="The wildfawn analyse crawl function.">
+			<figcaption>AnalyseCrawl() is an exportable function of the fawnbot package that produces a crawl analysis</figcaption>
+		</figure>
+		<p>The <b>analysis.go</b> file handles all functionality for producing a separate analysis output of the crawl, used to give the user a top-down view of the technical SEO of the crawled site. A Crawl Analysis struct stores totals for internal URLs (URLs on same domain), URLs with each status code, URLs with empty title and meta description fields, URLs without canonicals, URLs with explicit no-index tags, URLs not in sitemaps, URLs in sitemaps but non-indexable (i.e., URLs that don’t belong in sitemaps), and orphans (URLs with no internal links, necessarily in sitemaps).</p>
+		<p>Similarly, the runPostCrawl() function in <b>postcrawl.go</b> calculates the remaining values for each URLObject struct for any metrics that cannot be processed <i>on the Go</i>. These are generally bool values: IsOrphan; IsOnSitemap; IsCanonicalIndexable; IsSelfCanonicalising.</p>
+
+		<h3>import.go, export.go</h3>
+		<p>While not required for the crawl and analysis functionality of wildfawn, the import and export files are intrinsic to wildfawn’s utility as an accessible crawler. They are primarily designed to interface with the Google Sheets API to send and receive information on what sites to crawl, any settings, and a completed export of the results.</p>
+		<p>The <b>import.go</b> file declares two structs for the program: a <b>ProgramConfig</b> to adjust settings at the application level, and a <b>CrawlConfig</b> to adjust settings at the crawl export level. Most code in this file is self-explanatory, but I’ll briefly point out the IsSiteDue() function, which is used at the package level as part of a process to enable automated scheduling of crawls.</p>
+		<p>The <b>export.go</b> file is slightly more verbose, and handles the export of data to Google Sheets. Managed from <b>WriteWild()</b>, the function accepts both a list of URLObject and a CrawlAnalysis as data to write, and a CrawlConfig to establish where to write it. A new Sheets Service is set up to enable access to the Sheets API, which uses a local file for authentication (one could just as easily use a secret should this be deployed remotely), and then the function writes the Analysis, the latest Crawl which overwrites the previous crawl, and a copy of the latest crawl should the user wish to keep old data.</p>
+
+		<h2>Technical thoughts and time complexity of a web crawler</h2>
+		<p>I wanted to comment on several incidental learnings from this experience, especially given that this was my first practical application of the Go programming language.</p>
+		<p>First and foremost, I steadily added a variety of semantically <i>Go-esque</i> features as I became familiar with the language. <b>Errors as values</b> is a controversial feature of Golang, especially to its detractors, but for my own purposes and at the scope I use it, it’s a small price to pay. I hold that <b>the best programming languages are the ones that minimise human error</b>, such as through enforced typing, and it’s true that Go not forcing you to account for errors is a flaw, but that doesn’t make it unusable. It could always be worse - you could be writing your web server in JavaScript or Python - and once I had handled errors with all the necessary boilerplate code, I had a program that could return helpful error messages at all failpoints in its functions.</p>
+		<p>In a language without native classes, earlier versions of my project tended towards using lots of pointers. I finally had a use-case for them, and I finally got to understand what they were for, spurring my no-doubt-naïve hot take that <b>pointers are a hack to let you use value types as reference types</b>. But as my codebase grew I soon realised that passing all these pointers around felt a bit <i>pointless</i> for such small objects. I was also using it to return nil values for (pointers to) structs when those structs were empty, which is a little clunky.</p>
+		<p><b>Receiver functions</b> are Golang’s answer to dot notation, and one of my favourite quality of life features of languages like JavaScript. Even though a functional approach would encourage an expression of the form <code>qux(baz(bar(foo)))</code>, the use of dot notation is an example of where human-readability should take precedence in syntactical decisions - the code <code>foo.bar().baz().qux()</code> is so much cleaner.</p>
+		
 	</section>
 </div>
 
 <style>
     .image-wrapper {
-		max-width: 800px;
+		max-width: 100%;
 		width: 100%;
 		height: auto;
 		position: relative;
