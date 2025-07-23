@@ -40,8 +40,6 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding-left: 1em;
-    padding-right: 1em;
   }
 
   .main-content {
@@ -50,8 +48,8 @@
     margin-left: 0;
     margin-right: 0;
     padding-bottom: 2rem;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 1em;
+    padding-right: 1em;
     box-sizing: border-box;
   }
 </style>

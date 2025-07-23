@@ -20,7 +20,6 @@
 	footer {
 		background-color: rgba(31, 41, 55, 0.5);
 		color: #d1d5db;
-		padding: 1.5rem;
 		text-align: center;
 		margin-top: 3rem;
 		border-top: 1px solid rgba(31, 41, 55);
@@ -34,9 +33,11 @@
 	}
 
 	.footer-container {
-		max-width: 1280px;
+		max-width: 100%;
 		margin-left: auto;
 		margin-right: auto;
+		padding-left: 1.5rem; 
+    	padding-right: 1.5rem;
 	}
 
 	.social-links a {
