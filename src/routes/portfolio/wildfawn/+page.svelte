@@ -87,39 +87,3 @@
 
 	</section>
 </div>
-
-<style>
-    .image-wrapper {
-		max-width: 100%;
-		width: 100%;
-		height: auto;
-		position: relative;
-		overflow: hidden;
-		margin: 0 auto;
-	}
-
-	.image-wrapper img {
-		width: 100%;
-		height: auto;
-		display: block;
-	}
-
-	.image-wrapper figcaption {
-		font-size: 0.9em;
-		color: #555;
-		text-align: center;
-		margin-top: 0.5rem;
-	}
-
-	.image-placeholder {
-		max-width: 800px;
-		height: auto;
-		width: 100%;
-		aspect-ratio: 3 / 1;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: #f0f0f0;
-		object-fit: cover;
-	}
-</style>
