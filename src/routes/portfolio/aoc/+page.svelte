@@ -1,64 +1,21 @@
 <svelte:head>
-    <title>Under Construction</title>
-    <meta name="robots" content="noindex">
+    <title>Advent of Code | felixreverett</title>
+    <meta name="description" content="About my solutions to the Advent of Code DSA challenges." />
 </svelte:head>
 
-<div class="c-container">
-    <div class="c-content">
-        <h1>The Advent Of Code<br> Page Is Currently Under<br>Construction</h1>
-        <p>Please come back later :)</p>
-        <div class="spinner"></div>
-    </div>
+<div class="page-wrapper">
+	<div class="hero-section">
+		<h1>Advent of Code</h1>
+	</div>
+
+	<section class="content-section">
+        <h2>Why Advent of Code?</h2>
+        <p>Advent of Code is a yearly set of coding challenges designed to put one’s programming skills to the test. Every day of December, from the 1st to the 25th, a new challenge releases, steadily getting more complicated and putting your skills to the test in everything from graph traversal to defragmentation to memoization. It is a DSA masterclass.</p>
+        <p>The challenges are intentionally presented in a way that is language-agnostic. With only a set of instructions, an example input, and a user-specific real input, the programmer may (nay <i>should</i>) use any tool at their disposal to get to a single numerical solution.</p>
+        <p>Crucially, upon successfully solving the challenge, a craftily-prepared <b>part 2</b> is revealed with a new set of instructions for the same input, often pressing the programmer to <b>return</b> to the drawing board. Perhaps their initial recursive algorithm from part 1 now causes a stack overflow, or maybe the 100 values the user needs to cross-compare have become 100,000,000. The programmer would quite like their program to terminate in their lifetime.</p>
+        <p>For me, <b>Advent of Code may well be the single most impactful resource for building coding proficiency that I have used.</b> From humble beginnings two years ago, where I first attempted the puzzles in a single C# file, to more ambitious steps in AoC’s 2023 and 2024, where I dove headfirst for the first time into JavaScript and Golang, Advent of Code is the manifested proof that <b>practice makes perfect</b>.</p>
+        <p>So I invite you, dear reader, to leaf through my many solutions over many puzzles, and bear witness to this auto-biographical chronicle of code. To scrutinize the difference between my first clunky rough-cuts and more recent gems. To acknowledge the improvements yet critique the still present imperfections. To witness the clear cross-paradigm influences of C# on JavaScript, and of JavaScript on Go.</p>
+        <p>And to maybe ask yourself if those advent plans you had this Christmas could wait until January?</p>
+
+	</section>
 </div>
-
-<style>
-    .c-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: calc(100vh - 4rem);
-        text-align: center;
-    }
-    .c-content {
-        padding: 2rem;
-        background-color: #ffffff;
-        border-radius: 0.5rem;
-        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-        transition: background-color 0.3s ease;
-    }
-
-    .c-content h1 {
-        font-size: 2rem;
-        color: #1f2937;
-        margin-bottom: 1.5rem;
-    }
-
-    .spinner {
-        border: 4px solid #f3f4f6;
-        border-top: 4px solid #4f46e5;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        animation: spin 1s linear infinite;
-        margin: 0 auto;
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-
-    :global(html[data-theme="dark"]) .c-content {
-        background-color: #1f2937;
-        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
-    }
-
-    :global(html[data-theme="dark"]) .c-content h1 {
-        color: #e5e7eb;
-    }
-
-    :global(html[data-theme="dark"]) .spinner {
-        border: 4px solid #374151;
-        border-top: 4px solid #6366f1;
-    }
-</style>
