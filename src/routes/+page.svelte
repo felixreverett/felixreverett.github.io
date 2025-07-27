@@ -48,24 +48,11 @@
     <div class="hero-section">
         <h1>Hi, I'm Felix</h1>
     </div>
-    <section class="content-section">
-    <p>
-        I’m a <b>code enthusiast</b> with an ambition to make my dream projects a reality.
-        I mainly write in <b>Go</b>, <b>C#</b>, and <b>JavaScript</b>, and I have prior experience in
-        <b>Python</b> and <b>SQL</b>, but I am most at home with statically typed, compiled paradigms.
-    </p>
-    <p>
-        For me, code is both a creative outlet and an opportunity to try new puzzles and challenges.
-        I have always been fascinated by how computers work, and I am motivated more than ever by the
-        belief that the only true way to satisfy my questions is to keep writing code, no matter the project,
-        until I get there.
-    </p>
-    <p>
-        Read on and <a href="/portfolio">browse my full portfolio</a>, learn about <a href="/about">what I do
-        beyond coding</a>, and <a href="https://linkedin.com/in/felixreverett" target="_blank">connect with me
-        on LinkedIn</a>.
-    </p>
-            
+
+    <section class="content-section content-section-text">
+        <p>I’m a <b>programmer and code enthusiast</b> working an ambition to make my dream projects a reality. I primarily write in <b>Go</b>, <b>C#</b>, and <b>JavaScript</b>, and I also have experience in <b>Python</b> and <b>SQL</b>, but I am most at home with statically typed, compiled paradigms. </p>
+        <p>For me, code is both a creative outlet and an opportunity to try new puzzles and challenges. I have always been fascinated by how computers work, and I am motivated more than ever by the belief that the only true way to satisfy my questions is to keep writing code.</p>
+        <p> Read on and <a href="/portfolio">browse my full portfolio</a>, learn about <a href="/about">what I do beyond coding</a>, and <a href="https://linkedin.com/in/felixreverett" target="_blank">connect with me on LinkedIn</a>.</p>
     </section>
 
     <section class="content-section">
@@ -106,6 +93,12 @@
         margin-bottom: 3rem;
         box-sizing: border-box;
         width: 100%;
+    }
+
+    .content-section-text {
+        max-width: 800px;
+        align-self: center;
+        text-align: justify;
     }
 
     .content-container {
