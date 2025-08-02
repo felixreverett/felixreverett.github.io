@@ -61,6 +61,7 @@
                 description={project.description}
                 technologies={project.technologies}
                 projectLink={project.projectLink}
+                showLink={project.showLink}
                 githubLink={project.githubLink}
             />
             {/each}

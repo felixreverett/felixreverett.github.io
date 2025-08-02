@@ -8,6 +8,7 @@ export const projects = [
       technologies: ['golang', 'svelte', 'javascript', 'wails'],
       categories: ['backend', 'desktop apps'],
       projectLink: '/portfolio/wildfawn',
+      showLink: true,
       githubLink: 'https://github.com/felixreverett/wildfawn'
     },
     {
@@ -19,6 +20,7 @@ export const projects = [
       technologies: ['csharp', 'opengl'],
       categories: ['game development', 'graphics programming', 'desktop apps'],
       projectLink: '/portfolio/isola',
+      showLink: false,
       githubLink: 'https://github.com/felixreverett/isola'
     },
     {
@@ -30,6 +32,7 @@ export const projects = [
       technologies: ['javascript', 'golang'],
       categories: ['algorithms'],
       projectLink: '/portfolio/aoc',
+      showLink: false,
       githubLink: 'https://github.com/felixreverett/AdventOfCode2024'
     },
     {
@@ -41,6 +44,7 @@ export const projects = [
       technologies: ['javascript', 'svelte'],
       categories: ['web dev'],
       projectLink: '/',
+      showLink: false,
       githubLink: 'https://github.com/felixreverett/felixreverett.github.io'
     }
   ];
