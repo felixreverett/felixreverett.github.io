@@ -1,42 +1,8 @@
 <script>
   import ProjectCard from '$lib/components/ProjectCard.svelte';
   import SkillsCard from '$lib/components/SkillsCard.svelte';
+  import { projects } from '$lib/data/projects.js'
 
-  const projects = [
-    {
-      id: 1,
-      imageSrc: '/images/wildfawn-app-screenshot.webp',
-      imageAlt: 'Screenshot of wildfawn',
-      title: 'wildfawn SEO Crawler',
-      description: 'Open-Source lightweight SEO web crawler built in Go. I\'m currently developing a frontend using Svelte and Wails.',
-      technologies: ['golang', 'svelte', 'javascript', 'wails'],
-      categories: ['web', 'backend', 'desktop apps', 'open-source'],
-      projectLink: '/portfolio/wildfawn',
-      githubLink: 'https://github.com/felixreverett/wildfawn'
-    },
-    {
-      id: 2,
-      imageSrc: '/images/isola-app-screenshot.webp',
-      imageAlt: 'Screenshot of isola',
-      title: 'Isola',
-      description: 'An open-world exploration game built from the ground up in C# and OpenGL.',
-      technologies: ['csharp', 'opengl'],
-      categories: ['game development', 'graphics', 'desktop apps'],
-      projectLink: '/portfolio/isola',
-      githubLink: 'https://github.com/felixreverett/isola'
-    },
-    {
-      id: 3,
-      imageSrc: '/images/aoc-screenshot.webp',
-      imageAlt: 'Screenshot of Advent of Code',
-      title: 'Advent Of Code',
-      description: 'My JavaScript and Go solutions to the popular Advent Of Code DSA puzzles.',
-      technologies: ['javascript', 'golang'],
-      categories: ['algorithms', 'problem-solving', 'javascript', 'golang'],
-      projectLink: '/portfolio/aoc',
-      githubLink: 'https://github.com/felixreverett/AdventOfCode2024'
-    }
-  ];
 </script>
 
 <svelte:head>
@@ -67,6 +33,7 @@
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
                 {#each projects as project (project.id)}
+                    {#if (project.id < 4)}
                     <ProjectCard
                         imageSrc={project.imageSrc}
                         imageAlt={project.imageAlt}
@@ -74,8 +41,10 @@
                         description={project.description}
                         technologies={project.technologies}
                         projectLink={project.projectLink}
+                        showLink={project.showLink}
                         githubLink={project.githubLink}
                     />
+                    {/if}
                 {/each}
             </div>
             <div class="section-link-wrapper"><a href="/portfolio" class="secondary-button">
