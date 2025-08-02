@@ -7,6 +7,7 @@
 	export let description = 'A brief description of this project.';
 	export let technologies = [];
 	export let projectLink = '#';
+	export let showLink = false;
 	export let githubLink = '#';
 
 	$: displayedLogos = technologies
@@ -26,8 +27,10 @@
 	</div>
 	<p class="project-description">{description}</p>
 	<div class="card-footer-links">
-		<a href={projectLink} class="details-link">View Details &rarr;</a>
-		<a href={githubLink} target="_blank" aria-label="GitHub Repo"><i class="fab fa-github"></i></a>
+		{#if (showLink)}
+			<a href={projectLink} class="details-link">View Details &rarr;</a>
+		{/if}
+		<a href={githubLink} target="_blank" aria-label="GitHub Repo" class="github-link"><i class="fab fa-github"></i></a>
 	</div>
 </div>
 
@@ -140,4 +143,8 @@
 	.details-link:hover {
 		text-decoration: underline;
 	}  
+
+	.github-link {
+		margin-left: auto;
+	}
 </style>
