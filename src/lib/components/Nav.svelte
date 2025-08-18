@@ -8,6 +8,7 @@
 		{ href: '/', text: 'Home' },
 		//{ href: '/about', text: 'About Me' },
 		{ href: '/portfolio', text: 'Portfolio' },
+		{ href: '/blog', text: 'Blog'},
 	];
 
 	// --- Theme Logic ---
