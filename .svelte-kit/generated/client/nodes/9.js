@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/portfolio/isola/+page.svelte";
+export { default as component } from "../../../../src/routes/blog/sprite-batching/+page.svelte";
