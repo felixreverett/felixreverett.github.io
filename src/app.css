@@ -84,6 +84,19 @@ html[data-theme="dark"] .card {
     border-top: 1px solid #038299;
 }
 
+/* ===== Code Blocks ===== */
+pre[class*="language-"] {
+  padding: 1em !important;
+  border-radius: 8px !important;
+  font-size: 0.9em !important;
+}
+
+pre[class*="language-"] {
+  overflow-x: auto;
+  scrollbar-width: auto;
+  scrollbar-color: #555 #2d2d2d;
+}
+
 /* ===== H1 ===== */
 /* global styling */
 
