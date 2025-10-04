@@ -3,11 +3,13 @@
 <script>
 	import Nav from '../lib/components/Nav.svelte';
 	import Footer from '../lib/components/Footer.svelte';
+	import { afterNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import '../app.css';
 	import { replaceState } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { tick } from 'svelte';	
+	import { tick } from 'svelte';
+	import { browser } from '$app/environment';
 
 	const BASE_URL = 'https://felixreverett.com';
 	$: canonicalUrl = `${BASE_URL}${$page.url.pathname}`;
@@ -54,10 +56,20 @@
 			}
 		}
 	});
+
+	afterNavigate(() => {
+		console.log('afterNavigate triggered. Is Prism ready?', window.Prism);
+		if (window.Prism) {
+			window.Prism.highlightAll();
+			console.log("Prism has loaded successfully");
+		}
+	});
 </script>
 
 <svelte:head>
   <link rel="canonical" href={canonicalUrl} />
+  <link rel="stylesheet" href="/styles/prism.css" />
+  <script defer src="/styles/prism.js"></script>
 </svelte:head>
 
 <div class="site-wrapper">
