@@ -81,23 +81,3 @@
 
   <Footer />
 </div>
-
-<style>
-  /* All content fits inside this. Padding included here.*/
-  .site-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
-  .main-content {
-    flex-grow: 1;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    padding-bottom: 2rem;
-    padding-left: 1em;
-    padding-right: 1em;
-    box-sizing: border-box;
-  }
-</style>
