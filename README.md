@@ -1,4 +1,4 @@
-# Try felixreverett.com
+# [frev.cc/fount](https://frev.cc/fount)
 
 ## Commit messages
 - ✨ New feature
