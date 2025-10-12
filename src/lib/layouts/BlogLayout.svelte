@@ -1,12 +1,18 @@
 <!-- Reusable layout component for portfolio pages -->
- <div class="portfolio-layout">
+ <div class="blog-layout">
     <slot />
  </div>
 
 <style>
-    .portfolio-layout {
+    .blog-layout {
         max-width: 800px;
         margin: 0 auto;
-        text-align: justify;
+        text-align: left;
+        font-size: 20px;
     }
+    @media (max-width: 767px) {
+    .blog-layout {
+        font-size: 16px;
+    }
+}
 </style>
