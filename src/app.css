@@ -16,10 +16,11 @@
     --an-color: #038299;            /*anchor colour*/
     --border-color: #42deb9;        /*border colour*/
     --card-div-color: #e5e7eb;      /*card divider colour*/
-    --h1-from-color: #00869d;       /*h1 gradient styling*/
-    --h1-to-color: #42deb9;         /*h1 gradient styling*/
+    --h1-from-color: #42deb9;       /*h1 gradient styling*/
+    --h1-to-color: #bbf484;         /*h1 gradient styling*/
     --image-cap-color: #555;        /*image caption colour*/
     --image-place-color: #f0f0f0;   /*image placeholder colour*/
+    
 
     /* dark mode styling */
     --dm-bg-color: #0D1B26;         /*background colour*/
@@ -31,6 +32,12 @@
     --dm-h1-to-color:#42deb9;       /*h1 gradient styling*/         /*currently unused*/
     --dm-image-cap-color: #555;     /*image caption colour*/        /*currently unused*/
     --dm-image-place-color: #f0f0f0;/*image placeholder colour*/    /*currently unused*/
+    
+    /*Cards: card include cards, tables, and code blocks*/
+    --card-bg-color: #2d2d2d;
+    --card-row-color: #383838;
+    --card-row-color2: #727272;
+    --card-border-color: var(--h1-to-color);
 }
 
 *, *::before, *::after {
@@ -101,7 +108,7 @@ html[data-theme="dark"] .card {
     border-top: 1px solid var(--dm-card-div-color);
 }
 
-/* ===== Code Blocks ===== */
+/* ===== CODE BLOCKS ===== */
 pre[class*="language-"] {
   padding: 1em !important;
   border-radius: 8px !important;
@@ -174,6 +181,54 @@ html[data-theme="dark"] h3 {
     transition: color 0.3s ease;
 }
 
+/* ===== TABLES ===== */
+table {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+    overflow: hidden;
+    border: 1px solid var(--card-border-color);
+    border-top: 8px solid var(--card-border-color);
+    color: var(--dm-fg-color);
+    border-radius: 8px;
+    border-spacing: 0;
+}
+
+@media (min-width: 0px) {
+    table {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    table {
+        width: 80%;
+    }
+}
+
+thead th {
+    background-color: var(--card-bg-color);
+    font-weight: bold;
+}
+
+tbody tr:nth-child(odd) td {
+    background-color: var(--card-row-color);
+}
+
+tbody tr:nth-child(even) td {
+    background-color: var(--card-row-color2);
+}
+
+th, td {
+    padding: 8px;
+}
+
+th.align-right, td.align-right {
+    text-align: right;
+}
+
 /* ===== Page Wrapper ===== */
 /* used to wrap all content */
 .page-wrapper {
@@ -210,6 +265,7 @@ html[data-theme="dark"] h3 {
     position: relative;
     overflow: hidden;
     margin: 0 auto;
+    border-radius: 8px;
 }
 
 .image-wrapper img {
