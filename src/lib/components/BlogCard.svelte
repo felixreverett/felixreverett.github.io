@@ -40,8 +40,8 @@
 
 	:global(html[data-theme="dark"]) .blog-card {
 		background-color: #1f2937; /* Intentionally same as light mode */
-		border: 1px solid #038299;
-		border-top: 8px solid #038299;
+		border: 1px solid var(--card-border-color);
+		border-top: 8px solid var(--card-border-color);
 		transition: background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 	}
 
@@ -68,7 +68,7 @@
 	}
 
 	:global(html[data-theme="dark"]) .card-footer-links {
-		border-top: 1px solid #038299;
+		border-top: 1px solid var(--card-border-color);
 	}
 
 	.project-image-container {
@@ -98,10 +98,14 @@
 	}
 
 	.details-link {
-		color: #00869d;
+		color: var(--h1-from-color);
 		font-weight: 500;
 		text-decoration: none;
 		display: inline-block;
+	}
+
+	:global(html[data-theme="dark"]) .details-link {
+		color: var(--card-border-color);
 	}
 
 	.details-link:hover {
