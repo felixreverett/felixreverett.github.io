@@ -8,7 +8,7 @@
         max-width: 800px;
         margin: 0 auto;
         text-align: left;
-        font-size: 20px;
+        font-size: 18px;
     }
     @media (max-width: 767px) {
     .blog-layout {
