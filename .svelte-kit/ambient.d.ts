@@ -36,9 +36,11 @@ declare module '$env/static/private' {
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
 	export const DriverData: string;
-	export const EFC_14404_1592913036: string;
+	export const EFC_9732_1592913036: string;
 	export const ELECTRON_NO_ASAR: string;
 	export const ELECTRON_RUN_AS_NODE: string;
+	export const FPS_BROWSER_APP_PROFILE_STRING: string;
+	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const GOPATH: string;
 	export const HOMEDRIVE: string;
 	export const HOMEPATH: string;
@@ -126,9 +128,11 @@ declare module '$env/dynamic/private' {
 		COMPUTERNAME: string;
 		ComSpec: string;
 		DriverData: string;
-		EFC_14404_1592913036: string;
+		EFC_9732_1592913036: string;
 		ELECTRON_NO_ASAR: string;
 		ELECTRON_RUN_AS_NODE: string;
+		FPS_BROWSER_APP_PROFILE_STRING: string;
+		FPS_BROWSER_USER_PROFILE_STRING: string;
 		GOPATH: string;
 		HOMEDRIVE: string;
 		HOMEPATH: string;
