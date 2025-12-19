@@ -18,11 +18,14 @@
 
 <style>
 	footer {
-		background-color: rgba(31, 41, 55, 0.5);
-		color: #d1d5db;
-		text-align: center;
-		margin-top: 3rem;
-		border-top: 1px solid rgba(31, 41, 55);
+		background-color: var(--bg-color) !important;
+        color: var(--text-muted) !important;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: auto;
+        border-top: 1px solid var(--border-color) !important;
+        font-family: var(--font-mono);
+        transition: all var(--transition-fast);
 	}
 
 	:global(html[data-theme="dark"]) footer {
@@ -41,29 +44,21 @@
 	}
 
 	.social-links a {
-		color: #d1d5db;
-		text-decoration: none;
-		transition: color 0.2s ease-in-out;
-		display: flex;
-		align-items: center;
-	}
-
-	:global(html[data-theme="dark"]) .social-links a {
-		color: #9ca3af;
+		color: var(--text-secondary) !important;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        font-size: 0.875rem;
+        transition: color var(--transition-fast);
 	}
 
 	.social-links a:hover {
-		color: #ffffff;
-	}
-
-	:global(html[data-theme="dark"]) .social-links a:hover {
-		filter: drop-shadow(0 0 0.8em #42deb9);
+		color: var(--fg-color) !important;
 	}
 
 	.social-links a i {
 		font-size: 1.5rem;
 		margin-right: 0.5rem;
-		line-height: 1;
 	}
 
 	.social-links a span {
@@ -78,9 +73,14 @@
 	}
 
 	.social-links {
-		margin-top: 1rem;
 		display: flex;
-		justify-content: center;
-		gap: 1.5rem;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
 	}  
+
+	:global(html[data-theme="dark"]) footer {
+        background-color: #1a1a1a !important;
+        border-top-color: var(--border-color) !important;
+    }
 </style>

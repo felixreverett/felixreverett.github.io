@@ -101,42 +101,29 @@
     }
 
     .secondary-button {
+        font-family: var(--font-mono);
         font-weight: 600;
-        padding: 0.5rem 1.5rem;
-        border-radius: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius-md);
         text-decoration: none;
-        box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
-
-        background-color: #374151;
-        border: 3px solid transparent;
-        background-clip: padding-box, border-box;
-        background-origin: padding-box, border-box;
-        background-image:
-            linear-gradient(to bottom, #374151, #374151),
-            conic-gradient(from var(--bg-angle), transparent 0%, transparent 100%);
-
-        animation: spin 2.5s infinite linear paused;
-        transition: background-image 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        display: inline-block;
+        
+        background-color: var(--an-color) !important; 
+        color: #fff !important; 
+        border: 1px solid var(--an-color);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        transition: all var(--transition-fast);
     }
 
     .secondary-button:hover {
-        animation-play-state: running;
-        background-color: #4b5563;
-        background-image:
-            linear-gradient(to bottom, #4b5563, #4b5563),
-            conic-gradient(
-                from var(--bg-angle),
-                #00869d 0%,
-                #42deb9 50%,
-                #00869d 100%
-            );
+        background-color: var(--fg-color) !important;
+        border-color: var(--fg-color);
+        color: var(--an-color) !important;
+        box-shadow: var(--card-shadow-hover);
     }
 
     .secondary-button-text {
-        background-clip: text;
-        background-image: linear-gradient(to left, #00869d, #42deb9);
-        color: transparent;
-        position: relative;
-        z-index: 2;
+        background-image: none !important;
+        color: inherit !important;
     }
 </style>
