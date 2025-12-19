@@ -11,33 +11,39 @@
 }
 
 :root {
-    --bg-color: #f6f3f3;            /*background colour*/
-    --fg-color: #1f2937;            /*foreground colour*/
-    --an-color: #038299;            /*anchor colour*/
-    --border-color: #42deb9;        /*border colour*/
-    --card-div-color: #e5e7eb;      /*card divider colour*/
-    --h1-from-color: #42deb9;       /*h1 gradient styling*/
-    --h1-to-color: #bbf484;         /*h1 gradient styling*/
-    --image-cap-color: #555;        /*image caption colour*/
-    --image-place-color: #f0f0f0;   /*image placeholder colour*/
-    
+    --font-mono: 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
 
-    /* dark mode styling */
-    --dm-bg-color: #0D1B26;         /*background colour*/
-    --dm-fg-color: #e5e7eb;         /*foreground colour*/
-    --dm-an-color: #038299;         /*anchor colour*/
-    --dm-border-color: #038299;     /*border colour*/   
-    --dm-card-div-color: #038299;   /*card divider colour*/
-    --dm-h1-from-color:#00869d;     /*h1 gradient styling*/         /*currently unused*/
-    --dm-h1-to-color:#42deb9;       /*h1 gradient styling*/         /*currently unused*/
-    --dm-image-cap-color: #555;     /*image caption colour*/        /*currently unused*/
-    --dm-image-place-color: #f0f0f0;/*image placeholder colour*/    /*currently unused*/
+    --bg-color: #faf9f7;            /*background colour*/
+    --fg-color: #1a1a1a;            /*foreground colour*/
+    --an-color: #82c458;            /*anchor colour*/
+    --border-color: #e5e5e3;        /*border colour*/
+    --card-div-color: #e5e5e3;      /*card divider colour*/
+    --text-secondary: #4a4a4a;
+    --text-muted: #8a8a8a;
+
+    --h1-from-color: #42deb9;       /*h1 gradient styling*/         /*Not updated to new theme*/
+    --h1-to-color: #bbf484;         /*h1 gradient styling*/         /*Not updated to new theme*/
+    --image-cap-color: #555;        /*image caption colour*/        /*Not updated to new theme*/
+    --image-place-color: #f0f0f0;   /*image placeholder colour*/    /*Not updated to new theme*/
+    
+    --radius-md: 8px;
+    --transition-fast: 0.15s ease;
     
     /*Cards: card include cards, tables, and code blocks*/
     --card-bg-color: #2d2d2d;
     --card-row-color: #383838;
     --card-row-color2: #727272;
     --card-border-color: var(--h1-to-color);
+}
+
+html[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --fg-color: #e8e8e8;
+    --an-color: #a5f17a;
+    --border-color: #3a3a3a;
+    --card-div-color: #3a3a3a;
+    --text-secondary: #b8b8b8;
+    --text-muted: #888888;
 }
 
 *, *::before, *::after {
@@ -49,18 +55,17 @@ html,body {
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
+    font-family: var(--font-mono);
+    line-height: 1.7;
     overflow-x: hidden;
     background-color: var(--bg-color);
     color: var(--fg-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    -webkit-font-smoothing: antialiased;
 }
 
-html[data-theme="dark"] body {
-    background-color: var(--dm-bg-color);
-    color: var(--dm-fg-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
+h1, h2, h3, h4, h5, h6, p, span, div, a, button, input {
+    font-family: var(--font-mono) !important;
 }
 
 a {
