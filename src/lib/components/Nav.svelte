@@ -72,7 +72,9 @@
 	</div>
 
 	<div class="nav-container mobile-theme-toggle">
-		<a href="/" class="logo">felixreverett.com</a>
+		<a href="/" class="logo">
+        	<span class="brand-prefix">&gt;_</span> felixreverett.com <span class="cursor-blink">|</span>
+    	</a>
 
 		<div class="dropdown">
 			<button

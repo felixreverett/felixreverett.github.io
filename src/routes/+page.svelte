@@ -67,8 +67,15 @@
     .content-section-text {
         max-width: 800px;
         align-self: center;
-        text-align: justify;
+        text-align: left;
+        font-size: 18px;
     }
+
+    @media (max-width: 767px) {
+    .content-section-text {
+        font-size: 16px;
+    }
+}
 
     .content-container {
         margin-left: auto;
