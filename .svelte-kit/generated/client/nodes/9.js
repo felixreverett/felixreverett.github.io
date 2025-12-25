@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/blog/sprite-batching/+page.svelte";
+export { default as component } from "../../../../src/routes/blog/+page.svelte";
