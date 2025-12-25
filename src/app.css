@@ -125,16 +125,46 @@ html[data-theme="dark"] .card {
 }
 
 /* ===== CODE BLOCKS ===== */
-pre[class*="language-"] {
-  padding: 1em !important;
-  border-radius: 8px !important;
-  font-size: 0.9em !important;
-}
 
 pre[class*="language-"] {
-  overflow-x: auto;
-  scrollbar-width: auto;
-  scrollbar-color: #555 #2d2d2d;
+    background-color: #242424 !important; 
+    color: #e8e8e8 !important;
+    border: 1px solid #3a3a3a !important;
+    
+    border-left: 4px solid var(--an-color) !important;
+    
+    font-family: 'JetBrains Mono', monospace !important;
+    border-radius: var(--radius-md) !important;
+    font-size: 0.9em !important;
+    
+    padding: 1.5rem 1.5rem 2rem 1.5rem !important;
+    overflow-x: auto;
+    scrollbar-width: auto;
+    clip-path: inset(0% 0% 0% 0% round var(--radius-md));
+}
+
+pre[class*="language-"]::-webkit-scrollbar {
+    height: 12px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-track {
+    background: #242424;
+    margin: 0 10px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+    border: 3px solid #242424;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+code[class*="language-"] {
+    text-shadow: none !important;
+    background: transparent !important;
 }
 
 /* ===== H1 ===== */
@@ -326,4 +356,40 @@ tbody tr:last-child td {
     align-items: center;
     background-color: var(--image-place-color);
     object-fit: cover;
+}
+
+/* ===== Quotes ===== */
+
+.terminal-quote {
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    background-color: var(--bg-surface-secondary) !important;
+    border-left: 4px solid var(--an-color) !important;
+    border-radius: var(--radius-md);
+    position: relative;
+    font-family: 'Inter', -apple-system, sans-serif !important;
+}
+
+.terminal-quote p {
+    font-size: 1.2rem;
+    line-height: 1.2;
+    color: var(--fg-color) !important;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    font-style: italic;
+    font-family: inherit !important;
+}
+
+.terminal-quote cite {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.terminal-quote cite::before {
+    content: "// ";
+    color: var(--an-color);
 }
