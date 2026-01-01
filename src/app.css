@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
 @property --bg-angle {
     inherits: false;
     initial-value: 0deg;
@@ -371,13 +373,13 @@ tbody tr:last-child td {
 }
 
 .terminal-quote p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.2;
     color: var(--fg-color) !important;
     margin-bottom: 0.75rem;
     font-weight: 500;
     font-style: italic;
-    font-family: inherit !important;
+    font-family: 'IBM Plex Mono', monospace !important;
 }
 
 .terminal-quote cite {
@@ -392,4 +394,21 @@ tbody tr:last-child td {
 .terminal-quote cite::before {
     content: "// ";
     color: var(--an-color);
+}
+
+.blog-sign-off {
+    display: block;
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: var(--text-muted) !important;
+    font-family: var(--font-mono) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-style: normal;
+}
+
+.blog-sign-off::before {
+    content: "// ";
+    color: var(--an-color);
+    font-weight: bold;
 }
