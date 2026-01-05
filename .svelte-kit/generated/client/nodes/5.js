@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/portfolio/wildfawn/+layout.svelte";
+export { default as component } from "../../../../src/routes/portfolio/isola/+layout.svelte";

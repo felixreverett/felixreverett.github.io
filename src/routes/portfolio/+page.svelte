@@ -83,29 +83,29 @@
     }
 
     .filter-button {
-        background-color: #e0e0e0;
-        border: 1px solid #ccc;
-        padding: 0.6rem 1.2rem;
-        border-radius: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
         cursor: pointer;
-        font-size: 0.95rem;
-        font-weight: 500;
-        transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-        color: #333;
+        background-color: var(--bg-surface-secondary) !important;
+        border: 1px solid var(--border-color) !important;
+        color: var(--text-secondary) !important;
+        transition: all var(--transition-fast);
     }
 
     .filter-button:hover:not(.active) {
-        background-color: #d0d0d0;
-        border-color: #bbb;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: var(--bg-surface-hover) !important;
+        color: var(--fg-color) !important;
+        border-color: var(--text-muted) !important;
     }
 
     .filter-button.active {
-        background-color: #00869d;
-        color: #ffffff;
-        border-color: #006b7a;
-        font-weight: bold;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        background-color: var(--an-color) !important;
+        color: #ffffff !important;
+        border-color: var(--an-color) !important;
+        box-shadow: 0 0 0 3px var(--accent-subtle);
     }
 
     .projects-grid {
@@ -121,20 +121,19 @@
     color: #e5e7eb;
   }
 
-  :global(html[data-theme="dark"]) .filter-button {
-    background-color: #2d3748;
-    border-color: #4a5568;
-    color: #e5e7eb;
-  }
-
   :global(html[data-theme="dark"]) .filter-button:hover:not(.active) {
     background-color: #4a5568;
     border-color: #6b7280;
   }
 
-  :global(html[data-theme="dark"]) .filter-button.active {
-    background-color: #038299;
-    color: #ffffff;
-    border-color: #026374;
-  }
+:global(html[data-theme="dark"]) .filter-button {
+    background-color: #2d2d2d !important;
+    border-color: #3a3a3a !important;
+    color: #b8b8b8 !important;
+}
+
+:global(html[data-theme="dark"]) .filter-button.active {
+    background-color: var(--an-color) !important;
+    color: #1a1a1a !important;
+}
 </style>

@@ -49,13 +49,9 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #f3f4f6;
+        background-color: var(--border-color);
         border-radius: 34px;
-        transition: background-color 0.4s ease;
-    }
-
-    :global(html[data-theme="dark"]) .slider-track {
-        background-color: #374151;
+        transition: background-color var(--transition-fast);
     }
 
     .slider-thumb {
@@ -65,22 +61,15 @@
         width: 24px;
         left: 4px;
         bottom: 4px;
-        background-color: rgba(31, 41, 55, 0.5);
-        backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        background-color: var(--bg-color);
+        border: 1px solid var(--border-color);
         border-radius: 50%;
-        transition: transform 0.6s ease;
-        box-shadow: 0 2px 2px rgba(0,0,0,0.2);
-        transition: background-color 0.6s ease, transform 0.6s ease;
-    }
-
-    :global(html[data-theme="dark"]) .slider-thumb {
-        background-color: rgba(209, 213, 219, 0.75);
-        backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-        transition: background-color 0.6s ease, transform 0.6s ease;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
     .theme-slider-container input:checked + .slider-track {
-        background-color: #00869d;
+        background-color: var(--an-color) !important;
     }
 
     .theme-slider-container input:checked + .slider-track .slider-thumb {
