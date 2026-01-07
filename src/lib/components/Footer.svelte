@@ -28,6 +28,10 @@
         transition: all var(--transition-fast);
 	}
 
+	footer p {
+		font-size: 1rem !important;
+	}
+
 	:global(html[data-theme="dark"]) footer {
 		background-color: rgba(6, 19, 21, 0.5);
 		border-top: 1px solid rgba(6, 19, 21);
