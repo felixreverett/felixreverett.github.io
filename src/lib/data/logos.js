@@ -8,6 +8,8 @@ export const technologyLogos = {
     'svelte': { src: '/images/tech-logos/svelte-logo.svg', alt: 'Svelte' },
     'css': { src: '/images/tech-logos/css-logo.svg', alt: 'CSS' },
     'html': { src: '/images/tech-logos/html-logo.svg', alt: 'HTML' },
+    'php': { src: '/images/tech-logos/php-logo.svg', alt: 'PHP' },
+    'scala': { src: '/images/tech-logos/scala-logo.svg', alt: 'Scala' },
     // Frameworks/Libs
     'opengl': { src: '/images/tech-logos/opengl-logo.svg', alt: 'OpenGL' },
     'wails': { src: '/images/tech-logos/wails-logo-small.svg', alt: 'Wails' },
