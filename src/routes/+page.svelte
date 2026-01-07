@@ -122,6 +122,10 @@
         transition: all var(--transition-fast);
     }
 
+    :global(html[data-theme="dark"]) .secondary-button {
+    color: #1a1a1a !important; 
+}
+
     .secondary-button:hover {
         background-color: var(--fg-color) !important;
         border-color: var(--fg-color);
