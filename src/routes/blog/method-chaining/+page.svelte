@@ -60,7 +60,7 @@
 	<p>The prior Advent of Code code snippets underscore both the strengths and simplicity of map. The foundational use-case is to concisely split each value of an array into its own subarray, but with method chaining and especially with <b>lambda expression syntax</b> it becomes trivial to perform far more intricate computations.</p>
 	<p>And map is far from the only higher-order function, too. Its two partners-in-crime, .filter() and .reduce(), can both be used to transform iterable datatypes <i>functionally</i>.</p>
 	<p>But map() was the one that started it all for me. Paired with method chaining, you need only pass in the function argument for a syntactic flavour akin to ambrosia:</p>
-	<pre><code class="language-javascript">{@html escapeHtml(codeSnippet5)}</code></pre>
+	<pre><code class="language-scala">{@html escapeHtml(codeSnippet5)}</code></pre>
 	<h2>Chaining It All Together</h2>
 	<p>Congratulations, you’ve now survived an entire blog on method chaining.</p>
 	<p>As I progress towards being able to articulate what I like and dislike about programming languages, I find myself increasingly impressed by the sheer linguistic diversity that the world of code has created. Let it be known that there is no objective best language, because beauty is in the eye of the programmer, but if I can instill in others the feeling of awe that this reality has instilled in me, then I consider that a job well done.</p>
