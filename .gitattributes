@@ -1,0 +1,2 @@
+# Ignore these from Github Stats:
+*.d.ts linguist-vendored
