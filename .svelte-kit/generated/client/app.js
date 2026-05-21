@@ -16,21 +16,24 @@ export const nodes = [
 	() => import('./nodes/12'),
 	() => import('./nodes/13'),
 	() => import('./nodes/14'),
-	() => import('./nodes/15')
+	() => import('./nodes/15'),
+	() => import('./nodes/16'),
+	() => import('./nodes/17')
 ];
 
 export const server_loads = [];
 
 export const dictionary = {
-		"/": [7],
-		"/about": [8],
-		"/blog": [9],
-		"/blog/method-chaining": [10,[2]],
-		"/blog/sprite-batching": [11,[3]],
-		"/portfolio": [12],
-		"/portfolio/aoc": [13,[4]],
-		"/portfolio/isola": [14,[5]],
-		"/portfolio/wildfawn": [15,[6]]
+		"/": [8],
+		"/about": [9],
+		"/blog": [10],
+		"/blog/method-chaining": [11,[2]],
+		"/blog/sprite-batching": [12,[3]],
+		"/blog/what-is-functional-programming": [13,[4]],
+		"/portfolio": [14],
+		"/portfolio/aoc": [15,[5]],
+		"/portfolio/isola": [16,[6]],
+		"/portfolio/wildfawn": [17,[7]]
 	};
 
 export const hooks = {
