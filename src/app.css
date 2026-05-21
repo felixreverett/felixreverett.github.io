@@ -102,7 +102,7 @@ h1, h2, h3, h4, h5, h6, span, button, input {
 
 h1 { font-size: 3rem !important; }
 h2 { font-size: 2rem !important; }
-h3 { font-size: 1.25rem !important; }
+h3 { font-size: 1.5rem !important; }
 
 p, .content-section-text, .blog-layout {
     font-size: 18px;
@@ -188,6 +188,37 @@ code[class*="language-"] {
     background: transparent !important;
 }
 
+/* ===== Code snippet captions ===== */
+.code-figure {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.code-figure pre[class*="language-"] {
+    margin: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-bottom: none !important;
+    clip-path: none !important;
+}
+
+.code-figure figcaption {
+    background-color: #242424;
+    color: #b8b8b8;
+    
+    border: 1px solid #3a3a3a;
+    border-top: none;
+    border-left: 4px solid var(--an-color); 
+    
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    
+    border-bottom-left-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
+}
+
 /* ===== H1 ===== */
 /* global styling */
 
@@ -247,6 +278,40 @@ html[data-theme="dark"] h3 {
 
 :global(html[data-theme="dark"]) .section-title {
     transition: color 0.3s ease;
+}
+
+/* ===== Citations ===== */
+.citations-section {
+    margin: 3rem 0 2rem 0;
+    padding: 1.5rem 2rem;
+    background-color: #242424;
+    border-left: 4px solid var(--an-color);
+    border-radius: var(--radius-md);
+}
+
+.citations-section h2 {
+    font-size: 1.25rem !important; 
+    color: #e8e8e8 !important;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.citations-section p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #b8b8b8;
+    font-family: var(--font-mono);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.citations-section p:last-child {
+    margin-bottom: 0;
 }
 
 /* ===== TABLES ===== */
@@ -384,7 +449,7 @@ tbody tr:last-child td {
 .terminal-quote {
     margin: 2rem 0;
     padding: 1.5rem 2rem;
-    background-color: var(--bg-surface-secondary) !important;
+    background-color: #242424 !important; /* Always dark */
     border-left: 4px solid var(--an-color) !important;
     border-radius: var(--radius-md);
     position: relative;
@@ -393,7 +458,7 @@ tbody tr:last-child td {
 .terminal-quote p {
     font-size: 1rem;
     line-height: 1.3;
-    color: var(--text-secondary) !important;
+    color: #b8b8b8 !important; /* Always dark */
     margin-bottom: 0.75rem;
     font-weight: 200;
     font-family: var(--font-mono) !important;

@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/portfolio/aoc/+layout.svelte";
+export { default as component } from "../../../../src/routes/blog/what-is-functional-programming/+layout.svelte";
