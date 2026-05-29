@@ -1,6 +1,6 @@
 <svelte:head>
-    <title>What Is Functional Programming? | felixreverett</title>
-    <meta name="description" content="What is functional programming, what is the lambda calculus, and how do they differ from other programming languages?" />
+    <title>What Is Functional Programming?</title>
+    <meta name="description" content="What does it mean for a programming language to be functional, why is it different to other languages, and how is it connected to the Lambda Calculus?" />
 </svelte:head>
 
 <div class="page-wrapper">
