@@ -1,7 +1,7 @@
 <script>
     import { technologyLogos as Logos } from '../data/logos';
 
-    const languages = ['csharp', 'javascript', 'python', 'golang', 'scala', 'php'];
+    const languages = ['csharp', 'cpp', 'scala', 'javascript', 'python', 'golang', 'php'];
     const technologies = ['gcloud', 'docker', 'vscode', 'github', 'visualstudio', 'git', 'nodejs'];
     const frameworks = ['svelte', 'wails', 'opengl',];
 
