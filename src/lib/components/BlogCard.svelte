@@ -1,19 +1,24 @@
-<script>
-	export let imageSrc = '';
-	export let imageAlt = '';
-	export let title = '';
-	export let description = '';
-	export let blogLink = '';
+<script lang="ts">
+	export let imageSrc: string = '';
+	export let imageAlt: string = '';
+	export let title: string = '';
+	export let description: string = '';
+	export let blogLink:string = '';
+  export let readTime: number | undefined;
 </script>
 
 <div class="blog-card">
 	<div class="project-image-container">
 		<img src={imageSrc} alt={imageAlt} class="project-image" />
 	</div>
+
 	<h3>{title}</h3>
+
 	<p class="project-description">{description}</p>
+
 	<div class="card-footer-links">
 		<a href={blogLink} class="details-link">Read full blog &rarr;</a>
+    <span class="readTime">{readTime}m read</span>
 	</div>
 </div>
 
@@ -42,23 +47,23 @@
 
 	.blog-card:hover {
 		box-shadow: var(--card-shadow-hover);
-        border-color: var(--an-color) !important;
+    border-color: var(--an-color) !important;
 	}
 
 	/* ===== Custom Card H3 ===== */
 
 	h3 {
 		color: var(--fg-color) !important;
-        font-family: var(--font-mono);
-        margin-top: 0.5rem;
+    font-family: var(--font-mono);
+    margin-top: 0.5rem;
 	}
 
 	/* ===== CARD-FOOTER ===== */
 
 	.card-footer-links {
 		border-top: 1px solid var(--divider) !important;
-        margin-top: auto;
-        padding-top: 1rem;
+    margin-top: auto;
+    padding-top: 1rem;
 	}
 
 	.project-image-container {
@@ -82,7 +87,7 @@
 	
 	.project-description {
 		color: var(--text-secondary) !important;
-        font-size: 0.875rem;
+    font-size: 0.875rem;
 	}
 
 	.details-link {
@@ -94,6 +99,17 @@
 
 	.details-link:hover {
 		text-decoration: underline;
-    	opacity: 0.8;
-	}  
+    opacity: 0.8;
+	}
+
+  /* Defines the readtime box beside 'Read full blog' */ 
+  .readTime {
+    background-color: var(--card-border);
+    border: 1px solid var(--card-border) !important;
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: small;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
 </style>

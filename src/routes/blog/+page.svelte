@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 	import BlogCard from "$lib/components/BlogCard.svelte";
-	import {blogs} from "$lib/data/blogs.js";
+	import {blogs} from "$lib/data/blogs";
 </script>
 
 <svelte:head>
@@ -15,26 +15,27 @@
 
 	<section>
 		<div class="blogs-grid">
-            {#each blogs as blog (blog.id)}
-            <BlogCard
-                imageSrc={blog.imageSrc}
-                imageAlt={blog.imageAlt}
-                title={blog.title}
-                description={blog.description}
-                blogLink={blog.blogLink}
-            />
-            {/each}
-        </div>
+      {#each blogs as blog (blog.id)}
+      <BlogCard
+        imageSrc={blog.imageSrc}
+        imageAlt={blog.imageAlt}
+        title={blog.title}
+        description={blog.description}
+        blogLink={blog.blogLink}
+        readTime={blog.readTime}
+      />
+      {/each}
+    </div>
 	</section>
 </div>
 
 <style>
 	.blogs-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 2rem;
-        padding-bottom: 2rem;
-        align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    align-items: stretch;
     }
 </style>

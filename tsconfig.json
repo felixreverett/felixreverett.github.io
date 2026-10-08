@@ -1,26 +1,19 @@
-// jsconfig.json
+// tsconfig.json
 {
   "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
-    "allowJs": true,
-    "checkJs": true,
+    "allowJs": false,
+    "checkJs": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "baseUrl": ".",
     "paths": {
-      "$lib": [
-        "src/lib"
-      ],
-      "$lib/*": [
-        "src/lib/*"
-      ],
-      "$app/*": [
-        ".svelte-kit/types/src/app/*"
-      ]
+      "$lib":   ["./src/lib"],
+      "$lib/*": ["./src/lib/*"],
+      "$app/*": ["./.svelte-kit/types/src/app/*"]
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte", ".svelte-kit/ambient.d.ts"]
