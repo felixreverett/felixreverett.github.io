@@ -48,5 +48,15 @@ export const blogs: Blog[] = [
       blogLink: '/blog/what-is-functional-programming',
       wordCount: 3400,
       readTime: 26,
+    },
+    {
+      id: 4,
+      imageSrc: '/images/kestrel.png',
+      imageAlt: 'Hero image for kestrel LLM blog',
+      title: 'Fine-tuning LLMs for Low-Resource Languages',
+      description: 'My experience developing a fine-tuned local language translation model for Mauritian Creole.',
+      blogLink: '/blog/kestrel',
+      wordCount: 2900,
+      readTime: 22,
     }
   ];
